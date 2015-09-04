@@ -1,11 +1,13 @@
-class Etl < Formula
+require "formula"
+
+class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
   url "https://api.github.com/repos/lopter/lightsd/tarball/0.9.1"
   sha256 "ef4f8056bf39c8f2c440e442f047cafce1c102e565bb007791a27f77588157c2"
 
   depends_on "cmake" => :build
-  depends_on "libbsd" => :recommended
+  depends_on "libbsd" => :optional
   depends_on "libevent" => :build
   depends_on "python" => :optional
 
