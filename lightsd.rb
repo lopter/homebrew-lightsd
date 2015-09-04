@@ -5,6 +5,7 @@ class Lightsd < Formula
   homepage "https://github.com/lopter/lightsd/"
   url "https://api.github.com/repos/lopter/lightsd/tarball/0.9.1"
   sha256 "ef4f8056bf39c8f2c440e442f047cafce1c102e565bb007791a27f77588157c2"
+  revision 1
 
   depends_on "cmake" => :build
   depends_on "libbsd" => :optional
@@ -22,7 +23,7 @@ class Lightsd < Formula
     system "make", "install"
   end
 
-  head do
+  devel do
     url "https://github.com/lopter/lightsd.git"
   end
 
