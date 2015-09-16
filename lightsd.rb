@@ -3,8 +3,8 @@ require "formula"
 class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
-  url "https://github.com/lopter/lightsd/archive/0.9.3.tar.gz"
-  sha256 "b66e5663c0c1f563656f0f070b151a7d14622719c9029253d573b8db787d0da6"
+  url "https://github.com/lopter/lightsd/archive/0.9.4.tar.gz"
+  sha256 "c48459a4ae5ef1184dd79a9152f573117870bc75b8ec72335bee0504309dd6c1"
   revision 1
 
   depends_on "cmake" => :build
@@ -14,6 +14,17 @@ class Lightsd < Formula
   def install
     args = std_cmake_args
     args << "-DLGTD_RUNTIME_DIRECTORY=#{var}/run/lightsd"
+
+    # idk what std_cmake_args is supposed to do but it appears to be missing
+    # proper release flags:
+    cflags = %W[
+      -fstack-protector-strong
+      --param=ssp-buffer-size=4
+      -O3
+      -DNDEBUG
+    ]
+    args << "-DCMAKE_BUILD_TYPE=RELEASE"
+    args << "-DCMAKE_C_FLAGS_RELEASE='#{cflags * " "}'"
 
     system "cmake", *args
     system "make", "install"
