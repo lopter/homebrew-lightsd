@@ -3,13 +3,13 @@ require "formula"
 class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
-  url "https://github.com/lopter/lightsd/archive/1.0.1.tar.gz"
-  sha256 "4a97480bb41ff130798e7250cb1f157e702e82ef1c503b6b8a4dfbe19f427a82"
+  url "https://github.com/lopter/lightsd/archive/1.1.0.tar.gz"
+  sha256 "20027edfea1e197028132646aac4549a808216e2cbeaeae5ae0ec80684c12ef8"
   revision 1
 
   depends_on "cmake" => :build
   depends_on "libevent" => :build
-  depends_on "python" => :optional
+  depends_on "python3" => :optional
 
   def install
     args = std_cmake_args
@@ -45,7 +45,6 @@ class Lightsd < Formula
         <key>ProgramArguments</key>
         <array>
           <string>#{opt_bin}/lightsd</string>
-          <string>-f</string>
           <string>-v</string>
           <string>warning</string>
           <string>-s</string>
@@ -70,7 +69,7 @@ class Lightsd < Formula
     Once you've started lightsd with launchctl load (see below), you can start
     poking around with lightsc.py:
 
-      `lightsd --prefix`/share/doc/lightsd/examples/lightsc.py
+      `lightsd --prefix`/share/lightsd/examples/lightsc.py
     EOS
   end
 
@@ -80,7 +79,7 @@ class Lightsd < Formula
 
   devel do
     url "file:///Users/louis/projs/lightsd", :using => :hg
-    version "1.0"
+    version "1.1.0"
   end
 
   test do
