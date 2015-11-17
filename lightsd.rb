@@ -3,8 +3,8 @@ require "formula"
 class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
-  url "https://github.com/lopter/lightsd/archive/1.1.0.tar.gz"
-  sha256 "20027edfea1e197028132646aac4549a808216e2cbeaeae5ae0ec80684c12ef8"
+  url "https://github.com/lopter/lightsd/archive/1.1.1.tar.gz"
+  sha256 "43e34babcdd3181a1a73fd8a020f3e895793db568b60244a9aab6ed57ac37b41"
   revision 1
 
   depends_on "cmake" => :build
@@ -12,6 +12,9 @@ class Lightsd < Formula
   depends_on "python3" => :optional
 
   def install
+    # XXX, wtf? https://github.com/Homebrew/homebrew/issues/46061
+    ENV["PATH"] = "/usr/bin:#{ENV["PATH"]}"
+
     args = std_cmake_args
     args << "-DLGTD_RUNTIME_DIRECTORY=#{var}/run/lightsd"
 
@@ -79,7 +82,7 @@ class Lightsd < Formula
 
   devel do
     url "file:///Users/louis/projs/lightsd", :using => :hg
-    version "1.1.0"
+    version "1.1.1"
   end
 
   test do
