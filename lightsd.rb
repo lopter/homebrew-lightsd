@@ -3,8 +3,8 @@ require "formula"
 class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
-  url "https://github.com/lopter/lightsd/archive/1.1.2.tar.gz"
-  sha256 "ca8ce8fb87b896fcc9dad6b0512c061a150c1138e8a8554b60c43f4d11fce634"
+  url "https://downloads.lightsd.io/releases/lightsd-1.2.0-rc.1.tar.gz"
+  sha256 "1902996841122f353360b1cdc4e632a45fc164d47c6d56ff8e3ae855c460c6e6"
   revision 1
 
   depends_on "cmake" => :build
@@ -78,11 +78,6 @@ class Lightsd < Formula
 
   head do
     url "https://github.com/lopter/lightsd.git"
-  end
-
-  devel do
-    url "file:///Users/louis/projs/lightsd", :using => :hg
-    version "1.1.3"
   end
 
   test do
