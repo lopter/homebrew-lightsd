@@ -3,8 +3,10 @@ require "formula"
 class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
-  url "https://downloads.lightsd.io/releases/lightsd-1.2.0-rc.2.tar.gz"
-  sha256 "aecd8062cb7a1e8bd97db8d4319c446eb07b27bf3be35fae89eae12ef3fecc2e"
+  url "https://downloads.lightsd.io/releases/lightsd-1.2.0-rc.3.tar.gz"
+  sha256 "996e7d39a51aa9227d2ec3da186c7ebef5b604ecd50f06255a7e424b837979da"
+  # This will have ~ instead of - for rc versions:
+  version "1.2.0~rc.3
   revision 1
 
   depends_on "cmake" => :build
@@ -22,7 +24,7 @@ class Lightsd < Formula
     # proper release flags:
     cflags = %W[
       -fstack-protector-strong
-      --param=ssp-buffer-size=4
+      -D_FORTIFY_SOURCE=2
       -O3
       -DNDEBUG
     ]
@@ -69,8 +71,9 @@ class Lightsd < Formula
   end
 
   def caveats; <<-EOS.undent
-    Once you've started lightsd with launchctl load (see below), you can start
-    poking around with lightsc.py:
+    Once you've started lightsd (see the brew services command below, if you're
+    using tmux, remember that you will need to run it outside tmux), you can
+    start poking around with lightsc.py:
 
       `lightsd --prefix`/share/lightsd/examples/lightsc.py
     EOS
