@@ -3,10 +3,10 @@ require "formula"
 class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
-  url "https://downloads.lightsd.io/releases/lightsd-1.2.1-rc.1.tar.gz"
-  sha256 "ec420247fd3bf28f1c43ce325f97d55dd44bd05eef4b785fe9773ea5bc65fdf9"
+  url "https://downloads.lightsd.io/releases/lightsd-1.2.1-rc.2.tar.gz"
+  sha256 "5ce70f0856dafd9d3e2dd410e6e5095c6784e845bde7313bd8dae109d137641e"
   # This will have ~ instead of - for rc versions:
-  version "1.2.1~rc.1
+  version "1.2.1~rc.2"
   revision 1
 
   depends_on "cmake" => :build
@@ -75,7 +75,7 @@ class Lightsd < Formula
     using tmux, remember that you will need to run it outside tmux), you can
     start poking around with lightsc.py:
 
-      `lightsd --prefix`/share/lightsd/examples/lightsc.py
+      $(lightsd --prefix)/share/lightsd/examples/lightsc.py
     EOS
   end
 
