@@ -3,10 +3,10 @@ require "formula"
 class Lightsd < Formula
   desc "Daemon to control your LIFX wifi smart bulbs"
   homepage "https://github.com/lopter/lightsd/"
-  url "https://downloads.lightsd.io/releases/lightsd-1.2.0-rc.6.tar.gz"
-  sha256 "c09d9ec7af2354202878656ad972c5629d401e223b3fcea48eb2d51ba0df7d4b"
+  url "https://downloads.lightsd.io/releases/lightsd-1.2.1-rc.1.tar.gz"
+  sha256 "ec420247fd3bf28f1c43ce325f97d55dd44bd05eef4b785fe9773ea5bc65fdf9"
   # This will have ~ instead of - for rc versions:
-  version "1.2.0~rc.6
+  version "1.2.1~rc.1
   revision 1
 
   depends_on "cmake" => :build
